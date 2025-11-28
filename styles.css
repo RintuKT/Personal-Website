@@ -29,11 +29,9 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
-    background-image:
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: center top;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
+    background-position: 0 0;
 }
 
 .container {
@@ -51,7 +49,8 @@ h5,
 h6 {
     font-family: var(--font-heading);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-weight: 400;
 }
 
 /* Navigation */
@@ -160,9 +159,8 @@ h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.2;
+    background-image: none;
+    opacity: 1;
     z-index: -1;
 }
 
@@ -170,16 +168,21 @@ h6 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
 .hero-content {
     color: var(--text-primary);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-title {
@@ -200,8 +203,8 @@ h6 {
     font-weight: 400;
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
-    border-left: 2px solid var(--accent-color);
-    padding-left: 1rem;
+    border: none;
+    padding: 0;
 }
 
 .hero-description {
