@@ -32,6 +32,13 @@ body {
     background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
     background-size: 60px 60px;
     background-position: 0 0;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+section {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
 }
 
 .container {
@@ -747,6 +754,10 @@ section {
     border-top: 1px solid var(--border-color);
 }
 
+.contact-content {
+    display: block;
+}
+
 .contact-info h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -780,17 +791,10 @@ section {
     font-family: 'Courier New', monospace;
 }
 
-.social-links-container {
-    max-width: 800px;
-    margin: 0 auto 1rem;
-    display: flex;
-    justify-content: flex-start;
-    /* Align to left of the form as per "above the box" usually implies alignment */
-}
-
 .social-links {
     display: flex;
     gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .contact-form {
@@ -798,7 +802,7 @@ section {
     padding: 2rem;
     border: 1px solid var(--border-color);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 2rem 0 0 0;
 }
 
 .form-group {

@@ -48,9 +48,9 @@ window.addEventListener('scroll', () => {
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         // Get form data
         const formData = {
             name: document.getElementById('name').value,
@@ -58,18 +58,18 @@ if (contactForm) {
             subject: document.getElementById('subject').value,
             message: document.getElementById('message').value
         };
-        
+
         // Create mailto link with form data
         const mailtoLink = `mailto:rintuiri@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
             `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
         )}`;
-        
+
         // Open default email client
         window.location.href = mailtoLink;
-        
+
         // Show success message
         alert('Opening your email client. If it doesn\'t open automatically, please email directly to rintuiri@gmail.com');
-        
+
         // Reset form
         contactForm.reset();
     });
@@ -101,17 +101,17 @@ document.querySelectorAll('section').forEach(section => {
 // Animate stat numbers
 function animateStats() {
     const stats = document.querySelectorAll('.stat h3');
-    
+
     stats.forEach(stat => {
         const target = stat.textContent;
         const isNumber = /^\d+/.test(target);
-        
+
         if (isNumber) {
             const number = parseInt(target);
             const duration = 2000;
             const increment = number / (duration / 16);
             let current = 0;
-            
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= number) {
@@ -136,7 +136,7 @@ if (statsSection) {
             }
         });
     }, { threshold: 0.5 });
-    
+
     statsObserver.observe(statsSection);
 }
 
@@ -144,7 +144,7 @@ if (statsSection) {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -153,7 +153,7 @@ window.addEventListener('scroll', () => {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -166,7 +166,7 @@ window.addEventListener('scroll', () => {
 function typeWriter(element, text, speed = 100) {
     let i = 0;
     element.textContent = '';
-    
+
     function type() {
         if (i < text.length) {
             element.textContent += text.charAt(i);
@@ -174,7 +174,7 @@ function typeWriter(element, text, speed = 100) {
             setTimeout(type, speed);
         }
     }
-    
+
     type();
 }
 
@@ -182,7 +182,7 @@ function typeWriter(element, text, speed = 100) {
 window.addEventListener('load', () => {
     // Add any initialization code here
     console.log('Personal website loaded successfully!');
-    
+
     // Haptic Feedback Implementation
     const triggerHaptic = () => {
         // Check if vibration API is supported
@@ -200,4 +200,50 @@ window.addEventListener('load', () => {
     interactiveElements.forEach(element => {
         element.addEventListener('mouseenter', triggerHaptic);
     });
+
+    // Enhanced 3D Parallax Background Effect
+    const body = document.body;
+    const sections = document.querySelectorAll('section');
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    // Mouse move handler
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5);
+        mouseY = (e.clientY / window.innerHeight - 0.5);
+    });
+
+    // Touch move handler for mobile
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            mouseX = (e.touches[0].clientX / window.innerWidth - 0.5);
+            mouseY = (e.touches[0].clientY / window.innerHeight - 0.5);
+        }
+    });
+
+    // Smooth animation loop
+    function animate() {
+        // Smooth interpolation
+        currentX += (mouseX - currentX) * 0.05;
+        currentY += (mouseY - currentY) * 0.05;
+
+        // Apply 3D transform to body for background movement
+        const moveX = currentX * 30;
+        const moveY = currentY * 30;
+        body.style.transform = `translate(${moveX}px, ${moveY}px)`;
+
+        // Apply parallax to sections with different depths
+        sections.forEach((section, index) => {
+            const depth = (index % 3 + 1) * 0.5;
+            const sectionMoveX = currentX * 15 * depth;
+            const sectionMoveY = currentY * 15 * depth;
+            section.style.transform = `translate(${sectionMoveX}px, ${sectionMoveY}px)`;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 });
