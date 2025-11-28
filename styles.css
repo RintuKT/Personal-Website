@@ -283,6 +283,11 @@ body {
     transform: scale(1.1);
 }
 
+.profile-avatar:hover {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
 .profile-info {
     color: white;
 }
@@ -353,6 +358,8 @@ section {
 
 .stat:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .stat h3 {
@@ -411,7 +418,8 @@ section {
 
 .timeline-content:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .timeline-content h3 {
@@ -495,7 +503,8 @@ section {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 20px 40px -5px rgba(37, 99, 235, 0.3);
+    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .project-header {
@@ -564,6 +573,8 @@ section {
 
 .skill-category:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .skill-category h3 {
@@ -598,6 +609,7 @@ section {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
 }
 
 /* Education Section */
@@ -622,6 +634,8 @@ section {
 
 .education-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .education-icon {

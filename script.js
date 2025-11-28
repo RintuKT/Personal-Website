@@ -182,4 +182,22 @@ function typeWriter(element, text, speed = 100) {
 window.addEventListener('load', () => {
     // Add any initialization code here
     console.log('Personal website loaded successfully!');
+    
+    // Haptic Feedback Implementation
+    const triggerHaptic = () => {
+        // Check if vibration API is supported
+        if (navigator.vibrate) {
+            // Vibrate for 5ms (very subtle)
+            navigator.vibrate(5);
+        }
+    };
+
+    // Add haptic feedback to interactive elements
+    const interactiveElements = document.querySelectorAll(
+        'a, button, .project-card, .skill-item, .education-card, .social-link, .stat, .timeline-content, .skill-category'
+    );
+
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', triggerHaptic);
+    });
 });
